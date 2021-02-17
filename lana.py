@@ -11,6 +11,17 @@ layout = [[sg.Text('Enter a command'), sg.InputText()], [sg.Button('Ok'), sg.But
 window = sg.Window('lana', layout)
 
 import pyttsx3
+import speech_recognition as sr
+
+recognizer = sr.Recognizer()
+mic = sr.Microphone()
+
+with mic as source:
+    audio = recognizer.listen(source)
+
+output = recognizer.recognize_google(audio)
+
+print(output)
 
 engine = pyttsx3.init()
 
